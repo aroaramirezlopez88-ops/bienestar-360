@@ -1,0 +1,27 @@
+const pool = require("./db");
+
+async function obtenerServicios() {
+  const [rows] = await pool.query(`
+    SELECT
+      s.id,
+      s.nombre,
+      s.descripcion,
+      s.precio,
+      s.duracion_minutos,
+      s.imagen_url,
+      c.id AS categoria_id,
+      c.nombre AS categoria
+    FROM servicios s
+    INNER JOIN categorias c
+      ON s.categoria_id = c.id
+    WHERE s.activo = 1
+      AND c.activo = 1
+    ORDER BY c.id, s.id
+  `);
+
+  return rows;
+}
+
+module.exports = {
+  obtenerServicios,
+};

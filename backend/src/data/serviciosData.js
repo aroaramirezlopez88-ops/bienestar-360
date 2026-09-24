@@ -22,6 +22,33 @@ async function obtenerServicios() {
   return rows;
 }
 
+async function obtenerServicioPorId(id) {
+  const [rows] = await pool.query(
+    `
+      SELECT
+        s.id,
+        s.nombre,
+        s.descripcion,
+        s.precio,
+        s.duracion_minutos,
+        s.imagen_url,
+        c.id AS categoria_id,
+        c.nombre AS categoria
+      FROM servicios s
+      INNER JOIN categorias c
+        ON s.categoria_id = c.id
+      WHERE s.id = ?
+        AND s.activo = 1
+        AND c.activo = 1
+    `,
+    [id]
+  );
+
+  return rows[0];
+}
+
 module.exports = {
   obtenerServicios,
+  obtenerServicioPorId,
 };
+

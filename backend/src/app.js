@@ -1,8 +1,11 @@
 const express = require("express");
+const serviciosRoutes = require("./rutas/serviciosRoutes");
 
 const app = express();
 
 const PORT = 3000;
+
+app.use("/api/servicios", serviciosRoutes);
 
 app.get("/", (req, res) => {
   res.json({

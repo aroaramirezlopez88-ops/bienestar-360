@@ -5,6 +5,8 @@ const app = express();
 
 const PORT = 3000;
 
+app.use(express.json());
+
 app.use("/api/servicios", serviciosRoutes);
 
 app.get("/", (req, res) => {

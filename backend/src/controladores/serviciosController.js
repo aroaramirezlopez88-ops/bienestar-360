@@ -3,6 +3,7 @@ const {
   obtenerServicioPorId,
   crearServicio,
   actualizarServicio,
+  eliminarServicio,
 } = require("../data/serviciosData");
 
 async function listarServicios(req, res, next) {
@@ -121,10 +122,31 @@ async function modificarServicio(req, res, next) {
   }
 }
 
+async function borrarServicio(req, res, next) {
+  try {
+    const { id } = req.params;
+
+    const filasEliminadas = await eliminarServicio(id);
+
+    if (filasEliminadas === 0) {
+      return res.status(404).json({
+        message: "Servicio no encontrado",
+      });
+    }
+
+    res.json({
+      message: "Servicio eliminado correctamente",
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   listarServicios,
   mostrarServicioPorId,
   crearNuevoServicio,
   modificarServicio,
+  borrarServicio,
 };
 

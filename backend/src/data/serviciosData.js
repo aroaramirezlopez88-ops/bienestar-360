@@ -119,10 +119,25 @@ async function actualizarServicio(id, servicio) {
   return result.affectedRows;
 }
 
+async function eliminarServicio(id) {
+  const [result] = await pool.query(
+    `
+      UPDATE servicios
+      SET activo = 0
+      WHERE id = ?
+        AND activo = 1
+    `,
+    [id]
+  );
+
+  return result.affectedRows;
+}
+
 module.exports = {
   obtenerServicios,
   obtenerServicioPorId,
   crearServicio,
   actualizarServicio,
+  eliminarServicio,
 };
 

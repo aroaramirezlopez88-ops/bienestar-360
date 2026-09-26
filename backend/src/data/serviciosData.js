@@ -82,9 +82,47 @@ async function crearServicio(servicio) {
   return result.insertId;
 }
 
+async function actualizarServicio(id, servicio) {
+  const {
+    categoria_id,
+    nombre,
+    descripcion,
+    precio,
+    duracion_minutos,
+    imagen_url,
+  } = servicio;
+
+  const [result] = await pool.query(
+    `
+      UPDATE servicios
+      SET
+        categoria_id = ?,
+        nombre = ?,
+        descripcion = ?,
+        precio = ?,
+        duracion_minutos = ?,
+        imagen_url = ?
+      WHERE id = ?
+        AND activo = 1
+    `,
+    [
+      categoria_id,
+      nombre,
+      descripcion,
+      precio,
+      duracion_minutos,
+      imagen_url || null,
+      id,
+    ]
+  );
+
+  return result.affectedRows;
+}
+
 module.exports = {
   obtenerServicios,
   obtenerServicioPorId,
   crearServicio,
+  actualizarServicio,
 };
 

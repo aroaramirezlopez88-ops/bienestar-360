@@ -2,6 +2,7 @@ const {
   obtenerServicios,
   obtenerServicioPorId,
   crearServicio,
+  actualizarServicio,
 } = require("../data/serviciosData");
 
 async function listarServicios(req, res, next) {
@@ -72,9 +73,58 @@ async function crearNuevoServicio(req, res, next) {
   }
 }
 
+async function modificarServicio(req, res, next) {
+  try {
+    const { id } = req.params;
+
+    const {
+      categoria_id,
+      nombre,
+      descripcion,
+      precio,
+      duracion_minutos,
+      imagen_url,
+    } = req.body;
+
+    if (
+      categoria_id === undefined ||
+      !nombre ||
+      !descripcion ||
+      precio === undefined ||
+      duracion_minutos === undefined
+    ) {
+      return res.status(400).json({
+        message: "Faltan campos obligatorios",
+      });
+    }
+
+    const filasActualizadas = await actualizarServicio(id, {
+      categoria_id,
+      nombre,
+      descripcion,
+      precio,
+      duracion_minutos,
+      imagen_url,
+    });
+
+    if (filasActualizadas === 0) {
+      return res.status(404).json({
+        message: "Servicio no encontrado",
+      });
+    }
+
+    const servicioActualizado = await obtenerServicioPorId(id);
+
+    res.json(servicioActualizado);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   listarServicios,
   mostrarServicioPorId,
   crearNuevoServicio,
+  modificarServicio,
 };
 

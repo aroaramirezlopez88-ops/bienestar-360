@@ -2,6 +2,7 @@ const express = require("express");
 const serviciosRoutes = require("./rutas/serviciosRoutes");
 const categoriasRoutes = require("./rutas/categoriasRoutes");
 const consultasContactoRoutes = require("./rutas/consultasContactoRoutes");
+const notFound = require("./middlewares/notFound");
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.get("/", (req, res) => {
     message: "API de Bienestar 360 funcionando"
   });
 });
+
+app.use(notFound);
 
 app.listen(PORT, () => {
   console.log(`Servidor funcionando en http://localhost:${PORT}`);

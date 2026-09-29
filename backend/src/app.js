@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const serviciosRoutes = require("./rutas/serviciosRoutes");
 const categoriasRoutes = require("./rutas/categoriasRoutes");
 const consultasContactoRoutes = require("./rutas/consultasContactoRoutes");
@@ -9,6 +10,7 @@ const app = express();
 
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/servicios", serviciosRoutes);

@@ -6,6 +6,10 @@ const {
   eliminarServicio,
 } = require("../data/serviciosData");
 
+const {
+  obtenerCategoriaPorId,
+} = require("../data/categoriasData");
+
 async function listarServicios(req, res, next) {
   try {
     const servicios = await obtenerServicios();
@@ -57,6 +61,14 @@ async function crearNuevoServicio(req, res, next) {
       });
     }
 
+    const categoria = await obtenerCategoriaPorId(categoria_id);
+
+    if (!categoria) {
+      return res.status(400).json({
+        message: "Categoria no valida",
+      });
+    }
+
     const nuevoId = await crearServicio({
       categoria_id,
       nombre,
@@ -96,6 +108,14 @@ async function modificarServicio(req, res, next) {
     ) {
       return res.status(400).json({
         message: "Faltan campos obligatorios",
+      });
+    }
+
+    const categoria = await obtenerCategoriaPorId(categoria_id);
+
+    if (!categoria) {
+      return res.status(400).json({
+        message: "Categoria no valida",
       });
     }
 
@@ -149,4 +169,3 @@ module.exports = {
   modificarServicio,
   borrarServicio,
 };
-

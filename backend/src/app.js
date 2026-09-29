@@ -3,6 +3,7 @@ const serviciosRoutes = require("./rutas/serviciosRoutes");
 const categoriasRoutes = require("./rutas/categoriasRoutes");
 const consultasContactoRoutes = require("./rutas/consultasContactoRoutes");
 const notFound = require("./middlewares/notFound");
+const errorHandler = require("./middlewares/errorHandler");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Servidor funcionando en http://localhost:${PORT}`);

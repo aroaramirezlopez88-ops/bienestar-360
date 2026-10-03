@@ -5,6 +5,7 @@ function ServiceList() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todas");
+  const [ordenPrecio, setOrdenPrecio] = useState("sin-orden");
 
   useEffect(() => {
     async function cargarServicios() {
@@ -46,6 +47,16 @@ function ServiceList() {
     );
   });
 
+  const serviciosOrdenados = [...serviciosFiltrados];
+
+  if (ordenPrecio === "precio-asc") {
+    serviciosOrdenados.sort((a, b) => Number(a.precio) - Number(b.precio));
+  }
+
+  if (ordenPrecio === "precio-desc") {
+    serviciosOrdenados.sort((a, b) => Number(b.precio) - Number(a.precio));
+  }
+
   return (
     <section>
       <h2>Nuestros servicios</h2>
@@ -65,8 +76,20 @@ function ServiceList() {
         <option value="Masajes y Osteopatía">Masajes y Osteopatía</option>
       </select>
 
+      <label htmlFor="orden-precio">Ordenar por precio:</label>
+
+      <select
+        id="orden-precio"
+        value={ordenPrecio}
+        onChange={(event) => setOrdenPrecio(event.target.value)}
+      >
+        <option value="sin-orden">Sin ordenar</option>
+        <option value="precio-asc">Precio: menor a mayor</option>
+        <option value="precio-desc">Precio: mayor a menor</option>
+      </select>
+
       <div>
-        {serviciosFiltrados.map((servicio) => (
+        {serviciosOrdenados.map((servicio) => (
           <article key={servicio.id}>
             <h3>{servicio.nombre}</h3>
             <p>Categoría: {servicio.categoria}</p>

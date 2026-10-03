@@ -1,0 +1,30 @@
+---
+import ServiceDetail from "../../components/ServiceDetail.jsx";
+
+export async function getStaticPaths() {
+  const respuesta = await fetch("http://localhost:3000/api/servicios");
+  const servicios = await respuesta.json();
+
+  return servicios.map((servicio) => ({
+    params: {
+      id: String(servicio.id),
+    },
+  }));
+}
+
+const { id } = Astro.params;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalle del servicio | Bienestar 360</title>
+  </head>
+
+  <body>
+    <main>
+      <ServiceDetail id={id} client:load />
+    </main>
+  </body>
+</html>

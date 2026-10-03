@@ -1,61 +1,82 @@
 import { useEffect, useState } from "react";
 
 function ServiceList() {
-	const [servicios, setServicios] = useState([]);
-	const [cargando, setCargando] = useState(true);
-	const [error, setError] = useState("");
+  const [servicios, setServicios] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState("");
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todas");
 
-	useEffect(() => {
-		async function cargarServicios() {
-			try {
-				const respuesta = await fetch("http://localhost:3000/api/servicios");
+  useEffect(() => {
+    async function cargarServicios() {
+      try {
+        const respuesta = await fetch("http://localhost:3000/api/servicios");
 
-				if (!respuesta.ok) {
-					throw new Error("Error al obtener los servicios");
-				}
+        if (!respuesta.ok) {
+          throw new Error("Error al obtener los servicios");
+        }
 
-				const datos = await respuesta.json();
+        const datos = await respuesta.json();
 
-				setServicios(datos);
-			} catch (error) {
-				setError("No se pudieron cargar los servicios");
-			} finally {
-				setCargando(false);
-			}
-		}
+        setServicios(datos);
+      } catch (error) {
+        setError("No se pudieron cargar los servicios");
+      } finally {
+        setCargando(false);
+      }
+    }
 
-		cargarServicios();
-	}, []);
+    cargarServicios();
+  }, []);
 
-	if (cargando) {
-		return <p>Cargando servicios...</p>;
-	}
+  if (cargando) {
+    return <p>Cargando servicios...</p>;
+  }
 
-	if (error) {
-		return <p>{error}</p>;
-	}
+  if (error) {
+    return <p>{error}</p>;
+  }
 
-	if (servicios.length === 0) {
-		return <p>No hay servicios disponibles.</p>;
-	}
+  if (servicios.length === 0) {
+    return <p>No hay servicios disponibles.</p>;
+  }
+  const serviciosFiltrados = servicios.filter((servicio) => {
+    return (
+      categoriaSeleccionada === "Todas" ||
+      servicio.categoria === categoriaSeleccionada
+    );
+  });
 
-	return (
-		<section>
-			<h2>Nuestros servicios</h2>
-			<p>Servicios cargados: {servicios.length}</p>
+  return (
+    <section>
+      <h2>Nuestros servicios</h2>
+      <p>Servicios cargados: {servicios.length}</p>
+      <label htmlFor="categoria">Filtrar por categoría:</label>
 
-			<div>
-				{servicios.map((servicio) => (
-					<article key={servicio.id}>
-						<h3>{servicio.nombre}</h3>
-						<p>Categoría: {servicio.categoria}</p>
-						<p>Precio: {servicio.precio} €</p>
-						<p>Duración: {servicio.duracion_minutos} min</p>
-					</article>
-				))}
-			</div>
-		</section>
-	);
+      <select
+        id="categoria"
+        value={categoriaSeleccionada}
+        onChange={(event) => setCategoriaSeleccionada(event.target.value)}
+      >
+        <option value="Todas">Todas</option>
+        <option value="Manicura">Manicura</option>
+        <option value="Pedicura">Pedicura</option>
+        <option value="Depilación">Depilación</option>
+        <option value="Tratamientos Faciales">Tratamientos Faciales</option>
+        <option value="Masajes y Osteopatía">Masajes y Osteopatía</option>
+      </select>
+
+      <div>
+        {serviciosFiltrados.map((servicio) => (
+          <article key={servicio.id}>
+            <h3>{servicio.nombre}</h3>
+            <p>Categoría: {servicio.categoria}</p>
+            <p>Precio: {servicio.precio} €</p>
+            <p>Duración: {servicio.duracion_minutos} min</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default ServiceList;

@@ -2,17 +2,42 @@ import { useEffect, useState } from "react";
 
 function ServiceList() {
 	const [servicios, setServicios] = useState([]);
+	const [cargando, setCargando] = useState(true);
+	const [error, setError] = useState("");
 
 	useEffect(() => {
 		async function cargarServicios() {
-			const respuesta = await fetch("http://localhost:3000/api/servicios");
-			const datos = await respuesta.json();
+			try {
+				const respuesta = await fetch("http://localhost:3000/api/servicios");
 
-			setServicios(datos);
+				if (!respuesta.ok) {
+					throw new Error("Error al obtener los servicios");
+				}
+
+				const datos = await respuesta.json();
+
+				setServicios(datos);
+			} catch (error) {
+				setError("No se pudieron cargar los servicios");
+			} finally {
+				setCargando(false);
+			}
 		}
 
 		cargarServicios();
 	}, []);
+
+	if (cargando) {
+		return <p>Cargando servicios...</p>;
+	}
+
+	if (error) {
+		return <p>{error}</p>;
+	}
+
+    if (servicios.length === 0) {
+        return <p>No hay servicios disponibles.</p>;
+    }
 
 	return (
 		<section>

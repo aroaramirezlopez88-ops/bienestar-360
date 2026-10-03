@@ -35,14 +35,25 @@ function ServiceList() {
 		return <p>{error}</p>;
 	}
 
-    if (servicios.length === 0) {
-        return <p>No hay servicios disponibles.</p>;
-    }
+	if (servicios.length === 0) {
+		return <p>No hay servicios disponibles.</p>;
+	}
 
 	return (
 		<section>
 			<h2>Nuestros servicios</h2>
 			<p>Servicios cargados: {servicios.length}</p>
+
+			<div>
+				{servicios.map((servicio) => (
+					<article key={servicio.id}>
+						<h3>{servicio.nombre}</h3>
+						<p>Categoría: {servicio.categoria}</p>
+						<p>Precio: {servicio.precio} €</p>
+						<p>Duración: {servicio.duracion_minutos} min</p>
+					</article>
+				))}
+			</div>
 		</section>
 	);
 }

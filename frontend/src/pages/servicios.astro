@@ -1,20 +1,11 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import ServiceList from "../components/ServiceList.jsx";
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Servicios | Bienestar 360</title>
-	</head>
+<Layout title="Servicios | Bienestar 360">
+  <h1>Servicios</h1>
+  <p>Descubre nuestros servicios de estética y bienestar.</p>
 
-	<body>
-		<main>
-			<h1>Servicios</h1>
-			<p>Descubre nuestros servicios de estética y bienestar.</p>
-
-			<ServiceList client:load />
-		</main>
-	</body>
-</html>
+  <ServiceList client:load />
+</Layout>

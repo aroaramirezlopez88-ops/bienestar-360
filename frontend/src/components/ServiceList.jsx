@@ -96,6 +96,13 @@ function ServiceList() {
             <p>Precio: {servicio.precio} €</p>
             <p>Duración: {servicio.duracion_minutos} min</p>
             <a href={`/servicios/${servicio.id}`}>Ver detalle</a>
+            <a
+              href="https://wa.me/34680215466"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Reservar por WhatsApp
+            </a>
           </article>
         ))}
       </div>

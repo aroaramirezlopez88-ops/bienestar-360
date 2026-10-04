@@ -95,6 +95,7 @@ function ServiceList() {
             <p>Categoría: {servicio.categoria}</p>
             <p>Precio: {servicio.precio} €</p>
             <p>Duración: {servicio.duracion_minutos} min</p>
+            <a href={`/servicios/${servicio.id}`}>Ver detalle</a>
           </article>
         ))}
       </div>

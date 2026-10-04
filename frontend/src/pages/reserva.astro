@@ -1,17 +1,91 @@
 ---
+
 ---
 
 <html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Reserva | Bienestar 360</title>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Reserva | Bienestar 360</title>
+  </head>
 
-	<body>
-		<main>
-			<h1>Reserva</h1>
-			<p>Solicita información o pide tu cita en Bienestar 360.</p>
-		</main>
-	</body>
+  <body>
+    <main>
+      <h1>Reserva</h1>
+      <p>Solicita información o pide tu cita en Bienestar 360.</p>
+
+      <form id="formulario-reserva">
+        <div>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div>
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" />
+        </div>
+
+        <div>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" required></textarea>
+        </div>
+
+        <button type="submit">Enviar solicitud</button>
+      </form>
+
+      <p id="mensaje-formulario"></p>
+    </main>
+
+    <script>
+      const formulario = document.querySelector<HTMLFormElement>(
+        "#formulario-reserva",
+      );
+      const mensajeFormulario = document.querySelector("#mensaje-formulario");
+
+      if (formulario && mensajeFormulario) {
+        formulario.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const datosFormulario = new FormData(formulario);
+
+          const datos = {
+            nombre: datosFormulario.get("nombre"),
+            email: datosFormulario.get("email"),
+            telefono: datosFormulario.get("telefono"),
+            mensaje: datosFormulario.get("mensaje"),
+          };
+
+          try {
+            const respuesta = await fetch(
+              "http://localhost:3000/api/consultas-contacto",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(datos),
+              },
+            );
+
+            if (!respuesta.ok) {
+              throw new Error("Error al enviar la solicitud");
+            }
+
+            mensajeFormulario.textContent =
+              "Solicitud enviada correctamente. Nos pondremos en contacto contigo.";
+
+            formulario.reset();
+          } catch (error) {
+            mensajeFormulario.textContent =
+              "No se pudo enviar la solicitud. Inténtalo de nuevo.";
+          }
+        });
+      }
+    </script>
+  </body>
 </html>

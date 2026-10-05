@@ -3,6 +3,34 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Nosotros | Bienestar 360">
-  <h1>Nosotros</h1>
-  <p>Conoce al equipo de Bienestar 360.</p>
+  <section class="nosotros-intro">
+    <p class="nosotros-etiqueta">Conócenos</p>
+    <h1>Nosotros</h1>
+
+    <p>
+      En Bienestar 360 reunimos servicios de estética y bienestar en un mismo
+      espacio, con una atención cercana y orientada al cuidado personal.
+    </p>
+  </section>
+
+  <section class="equipo">
+    <h2>Nuestro equipo</h2>
+
+    <div class="equipo-grid">
+      <article class="equipo-card">
+        <h3>Estética</h3>
+        <p>
+          Servicios de manicura, pedicura, depilación y tratamientos faciales.
+        </p>
+      </article>
+
+      <article class="equipo-card">
+        <h3>Bienestar</h3>
+        <p>
+          Servicios de masaje, osteopatía, acupuntura, reflexología y
+          presoterapia.
+        </p>
+      </article>
+    </div>
+  </section>
 </Layout>

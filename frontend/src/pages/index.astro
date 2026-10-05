@@ -3,5 +3,59 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Bienestar 360">
-  <h1>Bienestar 360</h1>
+  <section class="hero">
+    <div class="hero-contenido">
+      <p class="hero-etiqueta">Estética y bienestar</p>
+
+      <h1>Bienestar 360</h1>
+
+      <p>
+        Un espacio dedicado al cuidado, la belleza y el bienestar, con servicios
+        pensados para que te sientas bien por dentro y por fuera.
+      </p>
+
+      <div class="hero-acciones">
+        <a href="/servicios">Ver servicios</a>
+        <a href="/reserva">Pedir cita</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="servicios-destacados">
+    <h2>Servicios destacados</h2>
+
+    <p>Descubre algunos de nuestros servicios de estética y bienestar.</p>
+
+    <div class="destacados-grid">
+      <article class="destacado-card">
+        <p class="destacado-categoria">Manicura</p>
+        <h3>Manicura Rusa</h3>
+        <p>45 min · 18,99 €</p>
+        <a href="/servicios/10">Ver detalle</a>
+      </article>
+
+      <article class="destacado-card">
+        <p class="destacado-categoria">Depilación</p>
+        <h3>Depilación Medias Piernas con Cera</h3>
+        <p>30 min · 11,00 €</p>
+        <a href="/servicios/29">Ver detalle</a>
+      </article>
+
+      <article class="destacado-card">
+        <p class="destacado-categoria">Masajes y Osteopatía</p>
+        <h3>Masaje y Osteopatía</h3>
+        <p>60 min · 38,00 €</p>
+        <a href="/servicios/2">Ver detalle</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="testimonios">
+    <h2>Lo que dicen nuestros clientes</h2>
+
+    <p>
+      La confianza y el bienestar de quienes nos visitan forman parte de nuestra
+      forma de trabajar.
+    </p>
+  </section>
 </Layout>

@@ -61,48 +61,56 @@ function ServiceList() {
     <section>
       <h2>Nuestros servicios</h2>
       <p>Servicios cargados: {servicios.length}</p>
-      <label htmlFor="categoria">Filtrar por categoría:</label>
+      <div className="servicios-controles">
+        <div className="control-grupo">
+          <label htmlFor="categoria">Filtrar por categoría:</label>
 
-      <select
-        id="categoria"
-        value={categoriaSeleccionada}
-        onChange={(event) => setCategoriaSeleccionada(event.target.value)}
-      >
-        <option value="Todas">Todas</option>
-        <option value="Manicura">Manicura</option>
-        <option value="Pedicura">Pedicura</option>
-        <option value="Depilación">Depilación</option>
-        <option value="Tratamientos Faciales">Tratamientos Faciales</option>
-        <option value="Masajes y Osteopatía">Masajes y Osteopatía</option>
-      </select>
+          <select
+            id="categoria"
+            value={categoriaSeleccionada}
+            onChange={(event) => setCategoriaSeleccionada(event.target.value)}
+          >
+            <option value="Todas">Todas</option>
+            <option value="Manicura">Manicura</option>
+            <option value="Pedicura">Pedicura</option>
+            <option value="Depilación">Depilación</option>
+            <option value="Tratamientos Faciales">Tratamientos Faciales</option>
+            <option value="Masajes y Osteopatía">Masajes y Osteopatía</option>
+          </select>
+        </div>
 
-      <label htmlFor="orden-precio">Ordenar por precio:</label>
+        <div className="control-grupo">
+          <label htmlFor="orden-precio">Ordenar por precio:</label>
 
-      <select
-        id="orden-precio"
-        value={ordenPrecio}
-        onChange={(event) => setOrdenPrecio(event.target.value)}
-      >
-        <option value="sin-orden">Sin ordenar</option>
-        <option value="precio-asc">Precio: menor a mayor</option>
-        <option value="precio-desc">Precio: mayor a menor</option>
-      </select>
+          <select
+            id="orden-precio"
+            value={ordenPrecio}
+            onChange={(event) => setOrdenPrecio(event.target.value)}
+          >
+            <option value="sin-orden">Sin ordenar</option>
+            <option value="precio-asc">Precio: menor a mayor</option>
+            <option value="precio-desc">Precio: mayor a menor</option>
+          </select>
+        </div>
+      </div>
 
-      <div>
+      <div className="servicios-grid">
         {serviciosOrdenados.map((servicio) => (
-          <article key={servicio.id}>
+          <article className="servicio-card" key={servicio.id}>
             <h3>{servicio.nombre}</h3>
             <p>Categoría: {servicio.categoria}</p>
             <p>Precio: {servicio.precio} €</p>
             <p>Duración: {servicio.duracion_minutos} min</p>
-            <a href={`/servicios/${servicio.id}`}>Ver detalle</a>
-            <a
-              href="https://wa.me/34680215466"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Reservar por WhatsApp
-            </a>
+            <div className="servicio-acciones">
+              <a href={`/servicios/${servicio.id}`}>Ver detalle</a>
+              <a
+                href="https://wa.me/34680215466"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Reservar por WhatsApp
+              </a>
+            </div>
           </article>
         ))}
       </div>

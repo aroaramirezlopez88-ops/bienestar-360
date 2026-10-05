@@ -71,3 +71,356 @@ footer p {
   margin: 0;
   font-weight: 600;
 }
+
+.hero {
+  background-color: var(--color-verde-suave);
+  border-radius: 1.5rem;
+  padding: 4rem 2rem;
+}
+
+.hero-contenido {
+  max-width: 700px;
+}
+
+.hero-etiqueta {
+  color: var(--color-verde-principal);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0 0 1rem;
+}
+
+.hero-contenido > p:not(.hero-etiqueta) {
+  font-size: 1.15rem;
+  max-width: 620px;
+}
+
+.hero-acciones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-acciones a {
+  display: inline-block;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.hero-acciones a:first-child {
+  background-color: var(--color-verde-principal);
+  color: var(--color-blanco);
+}
+
+.hero-acciones a:last-child {
+  background-color: var(--color-amarillo-calido);
+  color: var(--color-texto);
+}
+
+.servicios-destacados {
+  margin-top: 4rem;
+}
+
+.servicios-destacados h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.servicios-destacados > p {
+  margin-top: 0;
+}
+
+.destacados-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.destacado-card {
+  background-color: var(--color-blanco);
+  border: 1px solid var(--color-verde-suave);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.destacado-categoria {
+  color: var(--color-verde-principal);
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.destacado-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.destacado-card a {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  color: var(--color-verde-principal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.destacado-card a:hover {
+  text-decoration: underline;
+}
+
+.testimonios {
+  margin-top: 4rem;
+  background-color: var(--color-amarillo-suave);
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+
+.testimonios h2 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.testimonios > p {
+  margin-bottom: 0;
+  max-width: 700px;
+}
+
+.servicios-controles {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 2rem;
+}
+
+.control-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-grupo label {
+  font-weight: 600;
+}
+
+.control-grupo select {
+  min-width: 220px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-verde-suave);
+  border-radius: 0.5rem;
+  background-color: var(--color-blanco);
+  color: var(--color-texto);
+  font: inherit;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.servicio-card {
+  background-color: var(--color-blanco);
+  border: 1px solid var(--color-verde-suave);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.servicio-card h3 {
+  margin-top: 0;
+}
+
+.servicio-acciones {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.servicio-acciones a {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.servicio-acciones a:first-child {
+  background-color: var(--color-verde-suave);
+  color: var(--color-texto);
+}
+
+.servicio-acciones a:last-child {
+  background-color: var(--color-amarillo-calido);
+  color: var(--color-texto);
+}
+
+.servicio-detalle {
+  max-width: 750px;
+  margin: 2rem auto;
+  background-color: var(--color-blanco);
+  border: 1px solid var(--color-verde-suave);
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+
+.servicio-detalle h2 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.detalle-acciones {
+  margin-top: 2rem;
+}
+
+.detalle-acciones a {
+  display: inline-block;
+  padding: 0.85rem 1.4rem;
+  background-color: var(--color-amarillo-calido);
+  color: var(--color-texto);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.formulario-reserva {
+  max-width: 650px;
+  margin-top: 2rem;
+  background-color: var(--color-blanco);
+  border: 1px solid var(--color-verde-suave);
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.campo-formulario label {
+  font-weight: 600;
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-verde-suave);
+  border-radius: 0.5rem;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font: inherit;
+}
+
+.campo-formulario textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.formulario-reserva button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.4rem;
+  background-color: var(--color-amarillo-calido);
+  color: var(--color-texto);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#mensaje-formulario {
+  max-width: 650px;
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+}
+
+#mensaje-formulario:empty {
+  display: none;
+}
+
+#mensaje-formulario.mensaje-exito {
+  background-color: var(--color-verde-suave);
+  color: var(--color-texto);
+}
+
+#mensaje-formulario.mensaje-error {
+  background-color: #fde2e2;
+  color: #7a3030;
+}
+
+.nosotros-intro {
+  max-width: 800px;
+  margin-bottom: 4rem;
+}
+
+.nosotros-etiqueta {
+  color: var(--color-verde-principal);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.nosotros-intro h1 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+}
+
+.nosotros-intro > p:last-child {
+  font-size: 1.1rem;
+}
+
+.equipo h2 {
+  font-size: 2rem;
+}
+
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.equipo-card {
+  background-color: var(--color-blanco);
+  border: 1px solid var(--color-verde-suave);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.equipo-card h3 {
+  margin-top: 0;
+  color: var(--color-verde-principal);
+}
+
+@media (max-width: 768px) {
+  .destacados-grid,
+  .servicios-grid,
+  .equipo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    padding: 1rem 1.25rem;
+  }
+
+  nav {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+}

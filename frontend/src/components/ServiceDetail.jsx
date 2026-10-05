@@ -42,19 +42,21 @@ function ServiceDetail({ id }) {
   }
 
   return (
-    <section>
+    <section className="servicio-detalle">
       <h2>{servicio.nombre}</h2>
       <p>{servicio.descripcion}</p>
       <p>Categoría: {servicio.categoria}</p>
       <p>Precio: {servicio.precio} €</p>
       <p>Duración: {servicio.duracion_minutos} min</p>
-      <a
-        href="https://wa.me/34680215466"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Reservar por WhatsApp
-      </a>
+      <div className="detalle-acciones">
+        <a
+          href="https://wa.me/34680215466"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Reservar por WhatsApp
+        </a>
+      </div>
     </section>
   );
 }

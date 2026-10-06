@@ -10,7 +10,9 @@ function ServiceList() {
   useEffect(() => {
     async function cargarServicios() {
       try {
-        const respuesta = await fetch("http://localhost:3000/api/servicios");
+        const respuesta = await fetch(
+          `${import.meta.env.PUBLIC_API_URL}/api/servicios`,
+        );
 
         if (!respuesta.ok) {
           throw new Error("Error al obtener los servicios");

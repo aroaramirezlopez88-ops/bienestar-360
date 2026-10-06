@@ -58,7 +58,7 @@ import Layout from "../layouts/Layout.astro";
 
         try {
           const respuesta = await fetch(
-            "http://localhost:3000/api/consultas-contacto",
+            `${import.meta.env.PUBLIC_API_URL}/api/consultas-contacto`,
             {
               method: "POST",
               headers: {

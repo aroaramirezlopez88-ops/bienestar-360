@@ -9,7 +9,7 @@ function ServiceDetail({ id }) {
     async function cargarServicio() {
       try {
         const respuesta = await fetch(
-          `http://localhost:3000/api/servicios/${id}`,
+          `${import.meta.env.PUBLIC_API_URL}/api/servicios/${id}`,
         );
 
         if (!respuesta.ok) {

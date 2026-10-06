@@ -3,7 +3,10 @@ import Layout from "../../layouts/Layout.astro";
 import ServiceDetail from "../../components/ServiceDetail.jsx";
 
 export async function getStaticPaths() {
-  const respuesta = await fetch("http://localhost:3000/api/servicios");
+  const respuesta = await fetch(
+    `${import.meta.env.PUBLIC_API_URL}/api/servicios`,
+  );
+
   const servicios = await respuesta.json();
 
   return servicios.map((servicio) => ({

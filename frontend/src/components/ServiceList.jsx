@@ -29,9 +29,7 @@ function ServiceList() {
     cargarServicios();
   }, []);
 
-  if (cargando) {
-    return <p>Cargando servicios...</p>;
-  }
+  if (cargando) return <p className="estado-carga">Cargando servicios...</p>;
 
   if (error) {
     return <p>{error}</p>;
@@ -60,7 +58,7 @@ function ServiceList() {
   return (
     <section>
       <h2>Nuestros servicios</h2>
-      <p>Servicios cargados: {servicios.length}</p>
+      <p>Servicios disponibles: {serviciosOrdenados.length}</p>
       <div className="servicios-controles">
         <div className="control-grupo">
           <label htmlFor="categoria">Filtrar por categoría:</label>
@@ -93,6 +91,10 @@ function ServiceList() {
           </select>
         </div>
       </div>
+
+      {serviciosOrdenados.length === 0 && (
+        <p>No hay servicios disponibles para esta categoría.</p>
+      )}
 
       <div className="servicios-grid">
         {serviciosOrdenados.map((servicio) => (

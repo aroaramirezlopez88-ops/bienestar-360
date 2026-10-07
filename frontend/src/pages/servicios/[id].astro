@@ -7,7 +7,7 @@ export async function getStaticPaths() {
     `${import.meta.env.PUBLIC_API_URL}/api/servicios`,
   );
 
-  const servicios = await respuesta.json();
+  const servicios: { id: number }[] = await respuesta.json();
 
   return servicios.map((servicio) => ({
     params: {

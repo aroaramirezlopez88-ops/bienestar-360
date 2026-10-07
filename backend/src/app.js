@@ -10,7 +10,11 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:4321", process.env.FRONTEND_URL],
+  }),
+);
 app.use(express.json());
 
 app.use("/api/servicios", serviciosRoutes);
@@ -19,7 +23,7 @@ app.use("/api/consultas-contacto", consultasContactoRoutes);
 
 app.get("/", (req, res) => {
   res.json({
-    message: "API de Bienestar 360 funcionando"
+    message: "API de Bienestar 360 funcionando",
   });
 });
 

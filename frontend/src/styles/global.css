@@ -403,6 +403,14 @@ footer p {
   padding: 2rem;
 }
 
+.equipo-foto {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
 .equipo-card h3 {
   margin-top: 0;
   color: var(--color-verde-principal);
@@ -482,6 +490,10 @@ footer p {
   .servicios-grid,
   .equipo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .equipo-foto-borja {
+    object-position: center 40%;
   }
 
   header {

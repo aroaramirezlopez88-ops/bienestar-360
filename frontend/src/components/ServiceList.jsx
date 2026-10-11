@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
 
+const imagenesPorCategoria = {
+  Manicura: "/images/manicura.jpg",
+  Pedicura: "/images/pedicura.jpg",
+  Depilación: "/images/depilacion.jpg",
+  "Tratamientos Faciales": "/images/higiene.jpg",
+  "Masajes y Osteopatía": "/images/masaje.jpg",
+};
+
 function ServiceList() {
   const [servicios, setServicios] = useState([]);
   const [cargando, setCargando] = useState(true);
@@ -101,6 +109,12 @@ function ServiceList() {
       <div className="servicios-grid">
         {serviciosOrdenados.map((servicio) => (
           <article className="servicio-card" key={servicio.id}>
+            <img
+              className="servicio-imagen"
+              src={imagenesPorCategoria[servicio.categoria]}
+              alt={`Servicio de ${servicio.categoria}`}
+            />
+
             <h3>{servicio.nombre}</h3>
             <p>Categoría: {servicio.categoria}</p>
             <p>Precio: {servicio.precio} €</p>

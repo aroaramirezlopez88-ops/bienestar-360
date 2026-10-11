@@ -1,4 +1,11 @@
 import { useEffect, useState } from "react";
+const imagenesPorCategoria = {
+  Manicura: "/images/manicura.jpg",
+  Pedicura: "/images/pedicura.jpg",
+  Depilación: "/images/depilacion.jpg",
+  "Tratamientos Faciales": "/images/higiene.jpg",
+  "Masajes y Osteopatía": "/images/masaje.jpg",
+};
 
 function ServiceDetail({ id }) {
   const [servicio, setServicio] = useState(null);
@@ -43,6 +50,11 @@ function ServiceDetail({ id }) {
 
   return (
     <section className="servicio-detalle">
+      <img
+        className="detalle-imagen"
+        src={imagenesPorCategoria[servicio.categoria]}
+        alt={`Servicio de ${servicio.categoria}`}
+      />
       <h2>{servicio.nombre}</h2>
       <p>{servicio.descripcion}</p>
       <p>Categoría: {servicio.categoria}</p>

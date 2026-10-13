@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const {
   listarServicios,
   mostrarServicioPorId,
@@ -6,13 +6,14 @@ const {
   modificarServicio,
   borrarServicio,
 } = require("../controladores/serviciosController");
+const verificarApiKey = require("../middlewares/verificarApiKey");
 
 const router = express.Router();
 
 router.get("/", listarServicios);
 router.get("/:id", mostrarServicioPorId);
-router.post("/", crearNuevoServicio);
-router.put("/:id", modificarServicio);
-router.delete("/:id", borrarServicio);
+router.post("/", verificarApiKey, crearNuevoServicio);
+router.put("/:id", verificarApiKey, modificarServicio);
+router.delete("/:id", verificarApiKey, borrarServicio);
 
 module.exports = router;

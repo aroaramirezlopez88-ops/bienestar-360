@@ -118,6 +118,16 @@ https://bienestar-360.onrender.com
 | GET    | `/api/categorias`         | Obtener todas las categorías                  |
 | POST   | `/api/consultas-contacto` | Enviar una solicitud de información o reserva |
 
+### Rutas protegidas con API key
+
+Las rutas para crear, modificar o eliminar servicios requieren la cabecera `x-api-key`:
+
+- `POST /api/servicios`
+- `PUT /api/servicios/:id`
+- `DELETE /api/servicios/:id`
+
+La API key de demostración se facilita al profesor de forma privada y no se publica en el repositorio.
+
 ### Obtener un servicio por id
 
 ```http
@@ -191,6 +201,7 @@ Si faltan campos obligatorios, devuelve `400 Bad Request`:
 ```http
 POST /api/servicios
 Content-Type: application/json
+x-api-key: <API_KEY_DEMO>
 ```
 
 Ejemplo del body:
@@ -231,6 +242,7 @@ Si la categoría no existe:
 ```http
 PUT /api/servicios/:id
 Content-Type: application/json
+x-api-key: <API_KEY_DEMO>
 ```
 
 El `id` corresponde al servicio que se quiere modificar.
@@ -266,6 +278,7 @@ Si el servicio no existe, devuelve `404 Not Found`:
 
 ```http
 DELETE /api/servicios/:id
+x-api-key: <API_KEY_DEMO>
 ```
 
 El `id` corresponde al servicio que se quiere eliminar.

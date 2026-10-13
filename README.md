@@ -4,7 +4,22 @@
 
 Bienestar 360 es una aplicación web desarrollada como proyecto final del curso de Full Stack Web Development.
 
-Está pensada para un centro de estética y bienestar. La aplicación permite consultar los servicios disponibles, ver la información detallada de cada servicio y enviar una solicitud de información o reserva.
+Está pensada para un centro de estética y bienestar y permite consultar los servicios disponibles, filtrarlos por categoría, ordenarlos por precio, acceder al detalle de cada servicio y enviar solicitudes de información o reserva.
+
+La página principal incluye una presentación del centro, servicios destacados y testimonios de clientes. La interfaz está adaptada para su uso tanto en ordenador como en dispositivos móviles.
+
+## Funcionalidades principales
+
+- Consulta del catálogo de servicios.
+- Filtro de servicios por categoría.
+- Ordenación de servicios por precio.
+- Vista de detalle de cada servicio.
+- Formulario de contacto y solicitud de reserva.
+- Integración con WhatsApp para facilitar la reserva.
+- Página de presentación del equipo y del centro.
+- Servicios destacados en la página principal.
+- Testimonios reales de clientes.
+- Diseño responsive adaptado a ordenador y dispositivos móviles.
 
 ## Tecnologías utilizadas
 
@@ -13,7 +28,6 @@ Está pensada para un centro de estética y bienestar. La aplicación permite co
 - Base de datos: MySQL
 - Control de versiones: Git y GitHub
 - Despliegue: Netlify, Render y Clever Cloud
-
 
 ## Ejecutar el proyecto en local
 
@@ -93,16 +107,16 @@ https://bienestar-360.onrender.com
 
 ### Rutas
 
-| Método | Ruta | Descripción |
-| --- | --- | --- |
-| GET | `/` | Comprobar que la API está funcionando |
-| GET | `/api/servicios` | Obtener todos los servicios |
-| GET | `/api/servicios/:id` | Obtener un servicio por su id |
-| POST | `/api/servicios` | Crear un nuevo servicio |
-| PUT | `/api/servicios/:id` | Modificar un servicio |
-| DELETE | `/api/servicios/:id` | Eliminar un servicio |
-| GET | `/api/categorias` | Obtener todas las categorías |
-| POST | `/api/consultas-contacto` | Enviar una solicitud de información o reserva |
+| Método | Ruta                      | Descripción                                   |
+| ------ | ------------------------- | --------------------------------------------- |
+| GET    | `/`                       | Comprobar que la API está funcionando         |
+| GET    | `/api/servicios`          | Obtener todos los servicios                   |
+| GET    | `/api/servicios/:id`      | Obtener un servicio por su id                 |
+| POST   | `/api/servicios`          | Crear un nuevo servicio                       |
+| PUT    | `/api/servicios/:id`      | Modificar un servicio                         |
+| DELETE | `/api/servicios/:id`      | Eliminar un servicio                          |
+| GET    | `/api/categorias`         | Obtener todas las categorías                  |
+| POST   | `/api/consultas-contacto` | Enviar una solicitud de información o reserva |
 
 ### Obtener un servicio por id
 
@@ -343,13 +357,13 @@ Ejemplo abreviado de respuesta:
 
 La API utiliza los siguientes códigos HTTP principales:
 
-| Código | Significado |
-| --- | --- |
-| `200 OK` | La petición se ha realizado correctamente |
-| `201 Created` | Se ha creado un nuevo recurso correctamente |
-| `400 Bad Request` | Faltan datos obligatorios o algún dato no es válido |
-| `404 Not Found` | El recurso o la ruta solicitada no existe |
-| `500 Internal Server Error` | Se ha producido un error interno en el servidor |
+| Código                      | Significado                                         |
+| --------------------------- | --------------------------------------------------- |
+| `200 OK`                    | La petición se ha realizado correctamente           |
+| `201 Created`               | Se ha creado un nuevo recurso correctamente         |
+| `400 Bad Request`           | Faltan datos obligatorios o algún dato no es válido |
+| `404 Not Found`             | El recurso o la ruta solicitada no existe           |
+| `500 Internal Server Error` | Se ha producido un error interno en el servidor     |
 
 Si se intenta acceder a una ruta que no existe:
 

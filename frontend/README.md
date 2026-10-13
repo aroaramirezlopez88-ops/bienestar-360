@@ -1,43 +1,58 @@
-# Astro Starter Kit: Minimal
+# Frontend - Bienestar 360
 
-```sh
-npm create astro@latest -- --template minimal
+Frontend de la aplicación web Bienestar 360, desarrollado con Astro, React y CSS.
+
+## Funcionalidades
+
+- Página principal con presentación del centro.
+- Catálogo de servicios obtenido desde la API.
+- Filtro de servicios por categoría.
+- Ordenación de servicios por precio.
+- Vista de detalle de cada servicio.
+- Página de presentación del equipo.
+- Formulario de contacto y solicitud de reserva.
+- Integración con WhatsApp.
+- Servicios destacados y testimonios de clientes.
+- Diseño responsive para ordenador y dispositivos móviles.
+
+## Ejecutar en local
+
+Instalar las dependencias:
+
+```bash
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Iniciar el servidor de desarrollo:
 
-## 🚀 Project Structure
+```bash
+npm run dev
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+El frontend estará disponible en:
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+http://localhost:4321
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Variable de entorno
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Crear un archivo `.env` a partir de `.env.example`:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```env
+PUBLIC_API_URL=http://localhost:3000
+```
 
-## 🧞 Commands
+Esta variable indica la URL de la API utilizada por el frontend.
 
-All commands are run from the root of the project, from a terminal:
+## Build de producción
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+npm run build
+```
 
-## 👀 Want to learn more?
+El resultado se genera en la carpeta `dist`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Documentación completa
+
+La documentación completa del proyecto, incluyendo backend, base de datos, API y despliegue, se encuentra en el `README.md` principal de Bienestar 360.
